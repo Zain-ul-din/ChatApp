@@ -1,0 +1,49 @@
+
+
+.MainHeader{
+   display: flex;
+   position: fixed;
+   margin: 0px;
+   padding: 0%;
+   width: 100px;
+   height: 70px;
+   top :0px;
+   left: 0px;
+   background-color: white;
+   transform: scale(1);
+}
+.head{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    flex-direction: column;
+    padding: 10px;
+    padding-bottom: 5px;
+}
+
+img{
+    border-radius: 25px;
+}
+
+.OffSet{
+    margin-top: 10px;
+}
+
+.overrides{
+    background-color:#051527;
+}
+
+h1{
+    margin-left: 10px;
+    font-size: 20px;
+    display: inline-flex;
+    padding: auto;
+}
+.btnbtn{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    margin-top: 10px;
+}
