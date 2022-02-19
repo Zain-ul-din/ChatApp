@@ -44,7 +44,15 @@ export default function ChatRoom ({messageArray , CurrentUserId , profilePic , S
            )
          }
          
-         <div ref={dummyDiv} />
+         <Message 
+            text= {'hi there'} time={''} 
+            AavatarPic={''} isUser = {false} 
+            userName= {'bot'}
+          />
+
+         <div ref={dummyDiv}  className= 'bottomOffset'/>
+         
+
 
         <div className='TextInputArea'>  
         <div className="msger-inputarea">
@@ -61,7 +69,7 @@ export default function ChatRoom ({messageArray , CurrentUserId , profilePic , S
                     (e) =>{
                         console.log(State.length)
                         e.preventDefault()
-                        if(State.length >= 1 && State.length < 1000){
+                        if(State.length >= 1 && State.length <= 1000){
                            SubmitData()
                         }  
                     }
