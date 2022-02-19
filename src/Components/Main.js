@@ -61,13 +61,14 @@ function ChatRoomFunc (){
     const dummy = useRef()
 
     const messagesRef = firestore.collection('messages')
-    const query = messagesRef.orderBy('createdAt').limit(1000)
+    const query = messagesRef.orderBy('createdAt').limit(100)
   
     const [messages] = useCollectionData(query, { idField: 'id' })
    
     const [formValue, setFormValue] = useState('')
     
-    dummy.current.scrollIntoView({behavior : 'smooth'})
+    if(dummy.current)
+      dummy.current.scrollIntoView({behavior : 'smooth'})
 
     return(
        <>
