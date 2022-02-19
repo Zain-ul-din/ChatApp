@@ -67,6 +67,8 @@ function ChatRoomFunc (){
    
     const [formValue, setFormValue] = useState('')
     
+    dummy.current.scrollIntoView({behavior : 'smooth'})
+
     return(
        <>
          <ChatRoom
