@@ -54,4 +54,6 @@ body {
      flex-direction: column;
   }
 
- 
+ .bottomOffset{
+   margin-bottom: 10%;
+ }
