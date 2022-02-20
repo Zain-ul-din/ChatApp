@@ -1,5 +1,5 @@
 
-import { useRef , useState } from "react"
+import { useEffect, useRef , useState } from "react"
 
 import SignIn from "./SignIn"
 import ChatRoom from "./ChatRoom"
@@ -69,6 +69,10 @@ function ChatRoomFunc (){
     
     if(dummy.current)
       dummy.current.scrollIntoView({behavior : 'smooth'})
+      
+     useEffect(()=>{
+       window.scrollTo(0,document.body.scrollHeight)
+     },[messages])
 
     return(
        <>
