@@ -43,11 +43,12 @@ export default function ChatRoom ({messageArray , CurrentUserId , profilePic , S
             />
            )
          }
-         
+
          <Message 
             text= {'hi there'} time={''} 
             AavatarPic={''} isUser = {false} 
             userName= {'bot'}
+            isDummyMsg = {true}
           />
          
         <div className='TextInputArea'>  

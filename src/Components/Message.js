@@ -4,20 +4,20 @@ import './Styles/bootstrap.min.css'
 import './Styles/Message.css'
 
 
-export default function Message ({text , time , isUser , AavatarPic , userName}){
+export default function Message ({text , time , isUser , AavatarPic , userName , isDummyMsg}){
      const UserMsgClass = (isUser) ?   "my-message" :"sucess"
      const textColor = (isUser) ? 'text-success' : 'text-info' 
+     const dummyClass = (isDummyMsg) ? 'dummydiv' : ''
     return(
         <>
-        
-          <div className={`message ${UserMsgClass} FrndsMsg content`}>
+          <div className={`message ${UserMsgClass} FrndsMsg content ${dummyClass}`}>
                        <img alt="" class="img-circle medium-image" src={AavatarPic}/>
                    <div class="message-body">
                         <div class="message-info">
-                            <h4 className={`fw-light text-uppercase ${textColor} `}>@ {userName} </h4>
-                        <h5 className="font-monospace text-muted"> {new Date(time.seconds*1000).toDateString()} </h5>
+                            <h4 className={`fw-light text-uppercase ${textColor} responsiveClass`}>@ {userName} </h4>
+                        <h5 className="font-monospace text-muted responsiveTime"> {new Date(time.seconds*1000).toDateString()} </h5>
                   </div>
-                <div class="message-text lh-sm"> {text}</div> 
+                <div class="message-text lh-sm responsiveText"> {text}</div> 
           </div>         
           <br/> 
           </div>

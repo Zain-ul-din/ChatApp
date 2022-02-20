@@ -54,4 +54,8 @@ body {
      flex-direction: column;
   }
 
- 
+ @media (max-width : 1200px) {
+   .offsetOnScreenChange{
+     margin-bottom: 10%;
+   }
+ }
