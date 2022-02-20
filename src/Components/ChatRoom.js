@@ -49,11 +49,7 @@ export default function ChatRoom ({messageArray , CurrentUserId , profilePic , S
             AavatarPic={''} isUser = {false} 
             userName= {'bot'}
           />
-
-         <div ref={dummyDiv}  className= 'bottomOffset'/>
          
-
-
         <div className='TextInputArea'>  
         <div className="msger-inputarea">
          <input  value={State}
@@ -77,7 +73,7 @@ export default function ChatRoom ({messageArray , CurrentUserId , profilePic , S
           >Send</button>
         </div>
         </div>
-
+        <div ref={dummyDiv} className= 'bottomOffset d-flex'/>
          </>
      )
 }
