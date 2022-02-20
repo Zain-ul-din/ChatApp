@@ -24,7 +24,7 @@ export default function ChatRoom ({messageArray , CurrentUserId , profilePic , S
             uid : CurrentUserId ,
             pic: profilePic,
         })
-        SetState(' ')
+        SetState('')
         SetLoader(false)
         dummyDiv.current.scrollIntoView({behavior : 'smooth'})
     }
