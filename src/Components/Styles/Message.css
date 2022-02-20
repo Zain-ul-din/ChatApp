@@ -958,6 +958,7 @@
   }
   .responsiveText{
     font-size: small !important;
+    color: white !important;
   }
   .responsiveTime{
     font-size: 40% !important;
