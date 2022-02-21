@@ -96,8 +96,8 @@ function ChatRoomFunc (){
       onScreenSet(true)
       prevLen = messages.length 
     } 
-    
-    if(!onScreen && prevLen != messages.length) playSound() // if user not on screen and prev len is not equal current messages len (in sort message length changes)
+    // not working yet : && prevLen != messages.length
+    if(!onScreen  ) playSound() // if user not on screen and prev len is not equal current messages len (in sort message length changes)
     
   
 
