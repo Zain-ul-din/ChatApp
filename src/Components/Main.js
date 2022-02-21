@@ -32,10 +32,9 @@ firebase.initializeApp({
 const auth = firebase.auth()
 const firestore = firebase.firestore()
 
-// //Custom Components
 
 
-var prevLen = 0 // prev length of messages
+// var prevLen = 0 // prev length of messages
 
 export default function Main (){
     // Check React Works
@@ -65,11 +64,6 @@ function SignOut(){
       auth.signOut()
 }
 
-
-
-
-
-
 function ChatRoomFunc (){
     const [playSound] = useSound(NotifySound)
 
@@ -82,25 +76,20 @@ function ChatRoomFunc (){
 
     const [formValue, setFormValue] = useState('')
     
-    const [onScreen , onScreenSet] = useState(true)
+    const [onScreen , onScreenSet] = useState(false)
     
+    // window open 
+    window.onfocus = ()=>{
+      onScreenSet(true)
+    } 
+
+    if(!onScreen) playSound() // if user not on screen 
 
     // window quit
     window.onblur = ()=>{
       onScreenSet(false)
-      prevLen = messages.length
     }
-     
-    // window open 
-    window.onfocus = ()=>{
-      onScreenSet(true)
-      prevLen = messages.length 
-    } 
-    // not working yet : && prevLen != messages.length
-    if(!onScreen  ) playSound() // if user not on screen and prev len is not equal current messages len (in sort message length changes)
     
-  
-
     useEffect(()=>{
       dummy.current.scrollIntoView({behavior : 'smooth'})
       window.scrollTo(0,document.body.scrollHeight)
