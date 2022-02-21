@@ -13,6 +13,12 @@ import 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 
+
+// Sound
+import NotifySound from './Sound/Notify.mp3' // Notify Sound
+import useSound from 'use-sound' // Use Sound hook
+
+
 firebase.initializeApp({
     apiKey: "AIzaSyAkRV_2Zi_cbiuptzfoSvwmWCsTtYO2zKk",
     authDomain: "newchatapp-98684.firebaseapp.com",
@@ -31,7 +37,8 @@ const firestore = firebase.firestore()
 
 
 export default function Main (){
-    
+    // Check React Works
+
     const [user] = useAuthState(auth);
     return (
         <>
@@ -57,9 +64,15 @@ function SignOut(){
       auth.signOut()
 }
 
-function ChatRoomFunc (){
-    const dummy = useRef()
 
+
+
+
+
+function ChatRoomFunc (){
+    const [playSound] = useSound(NotifySound)
+
+    const dummy = useRef()
     const messagesRef = firestore.collection('messages')
     const query = messagesRef.orderBy('createdAt').limit(100)
   
@@ -67,13 +80,22 @@ function ChatRoomFunc (){
    
     const [formValue, setFormValue] = useState('')
     
-    if(dummy.current)
-      dummy.current.scrollIntoView({behavior : 'smooth'})
-      
-     useEffect(()=>{
-       window.scrollTo(0,document.body.scrollHeight)
-     },[messages])
+    const [onScreen , onScreenSet] = useState(true)
+    
+    // window quit
+    window.onblur = ()=>{onScreenSet(false)}
+     
+    // window open 
+    window.onfocus = ()=>{onScreenSet(true)} 
+    
+    if(!onScreen) 
+          playSound() // if user not on screen
 
+    useEffect(()=>{
+      dummy.current.scrollIntoView({behavior : 'smooth'})
+      window.scrollTo(0,document.body.scrollHeight)
+    },[messages])
+    
     return(
        <>
          <ChatRoom

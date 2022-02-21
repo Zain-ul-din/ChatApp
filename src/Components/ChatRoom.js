@@ -18,11 +18,11 @@ export default function ChatRoom ({messageArray , CurrentUserId , profilePic , S
     const SubmitData = async () => {
         SetLoader(true)
         await firebaseLink.add({
-            text: State,
-            createdAt: firebaseObj.firestore.Timestamp.now(),
-            name : userName,
+            text: State ,
+            createdAt: firebaseObj.firestore.Timestamp.now() ,
+            name : userName ,
             uid : CurrentUserId ,
-            pic: profilePic,
+            pic: profilePic ,
         })
         SetState('')
         SetLoader(false)
@@ -45,7 +45,7 @@ export default function ChatRoom ({messageArray , CurrentUserId , profilePic , S
          }
 
          <Message 
-            text= {'hi there'} time={''} 
+            text= {'hi there 🖐'} time={''} 
             AavatarPic={''} isUser = {false} 
             userName= {'bot'}
             isDummyMsg = {true}
@@ -57,18 +57,16 @@ export default function ChatRoom ({messageArray , CurrentUserId , profilePic , S
          type="text" className="msger-input"
              onChange={(e)=>{
                 {SetState(e.target.value)}
-              //  console.log(State)
              }}
          placeholder="Enter your message..." />
          <Loader show={showLoader}/>
           <button type="submit" className="msger-send-btn" 
                 onClick={
                     (e) =>{
-                        console.log(State.length)
                         e.preventDefault()
                         if(State.length >= 1 && State.length <= 1000){
                            SubmitData()
-                        }  
+                        }  else if(State.length >= 1000) alert('Message is too long!!')
                     }
                 }
           >Send</button>
