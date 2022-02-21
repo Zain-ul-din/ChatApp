@@ -35,6 +35,7 @@ const firestore = firebase.firestore()
 // //Custom Components
 
 
+var prevLen = 0 // prev length of messages
 
 export default function Main (){
     // Check React Works
@@ -77,26 +78,35 @@ function ChatRoomFunc (){
     const query = messagesRef.orderBy('createdAt').limit(100)
   
     const [messages] = useCollectionData(query, { idField: 'id' })
-   
+    
+
     const [formValue, setFormValue] = useState('')
     
     const [onScreen , onScreenSet] = useState(true)
     
+
     // window quit
-    window.onblur = ()=>{onScreenSet(false)}
+    window.onblur = ()=>{
+      onScreenSet(false)
+      prevLen = messages.length
+    }
      
     // window open 
-    window.onfocus = ()=>{onScreenSet(true)} 
+    window.onfocus = ()=>{
+      onScreenSet(true)
+      prevLen = messages.length 
+    } 
     
-    if(!onScreen) 
-          playSound() // if user not on screen
+    if(!onScreen && prevLen != messages.length) playSound() // if user not on screen and prev len is not equal current messages len (in sort message length changes)
+    
+  
 
     useEffect(()=>{
       dummy.current.scrollIntoView({behavior : 'smooth'})
       window.scrollTo(0,document.body.scrollHeight)
     },[messages])
     
-    return(
+    return( 
        <>
          <ChatRoom
           messageArray={messages} 
